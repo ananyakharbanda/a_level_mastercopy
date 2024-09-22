@@ -106,3 +106,102 @@ print(hex2dec('2A'))
 
 xx = ' '.join(['ananya', 'kharbanda', 'singapore'])
 print(xx)
+
+
+a_tuple = (2,5)
+# cannot do this
+# a_tuple[0] = 5
+print(a_tuple)
+
+
+# recursive functions
+
+def sum_of_digits(num):
+    if num < 10:
+        sum = num
+        return sum
+    else:
+        return sum_of_digits((num // 10)) + (num % 10)
+
+def power(base, exponent):
+    if exponent == 0:
+        return 1
+    elif exponent == 1:
+        return base
+    else:
+        return base * power(base, exponent-1)
+
+def sum_of_list(arr):
+    if len(arr) == 1:
+        return arr[0]
+    else:
+        return sum_of_list(arr[:-1]) + arr[-1]
+
+def is_palindrome(str):
+    if len(str) == 1:
+        return True
+    elif len(str) == 2:
+        if str[0] == str[1]:
+            return True
+    elif str[0] == str[-1]:
+        return is_palindrome(str[1:-1])
+    else:
+        return False
+    
+# print(sum_of_digits(23453))
+# print(power(9, 3))
+# print(sum_of_list([1,4,3,2]))
+print(is_palindrome('123211'))
+
+class RecPrinter():
+    def __init__(self):
+        self.a = [10, 12, 14, 25, 34]
+    
+    def print_rec(self, a):
+        if len(a) == 0:
+            return
+        print(a[0])
+        n = a[1:]
+        self.print_rec(n)
+
+# x = RecPrinter()
+# x.print_rec(x.a)
+
+def factorial(n):
+    if n <= 1:
+        return n
+    return factorial(n-1) * n
+
+# x = factorial(5)
+# print(x)
+
+def sum_upto(n):
+    if n <= 1:
+        return n
+    return sum_upto(n-1) + n
+
+# x = sum_upto(5)
+# print(x) 
+
+def fibonnaci_ite(n):
+    fib_seq = [1,1]
+    num = n-2
+    while num != 0:
+        fib_seq.append(fib_seq[-1] + fib_seq[-2])
+        num -= 1
+    return fib_seq
+# print(fibonnaci_ite(5))
+
+def get_fibonnaci_rec(n):
+    if n <= 2:
+        return 1
+    return get_fibonnaci_rec(n-1) + get_fibonnaci_rec(n-2)
+# print(get_fibonnaci_rec(6))
+
+def fibonnaci_rec_print(n, a=0, b=1, count=0):
+    if count == n:
+        return
+    print(a)
+    fibonnaci_rec_print(n, b, a+b, count+1)
+
+fibonnaci_rec_print(10)
