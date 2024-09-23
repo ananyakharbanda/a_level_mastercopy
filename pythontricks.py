@@ -205,3 +205,7 @@ def fibonnaci_rec_print(n, a=0, b=1, count=0):
     fibonnaci_rec_print(n, b, a+b, count+1)
 
 fibonnaci_rec_print(10)
+
+
+# while True:
+#     print('true')
