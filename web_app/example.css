@@ -1,0 +1,36 @@
+* {
+  background-color: greenyellow;
+}
+
+/* element selector */
+p {
+  font-style: italic;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: right;
+}
+
+/* id selector */
+#main_header {
+  font-size: larger;
+  font-weight: 700;
+}
+
+/* class selector */
+.class1 {
+  color: blueviolet;
+  text-decoration: line-through;
+}
+
+/* h1,
+p,
+b,
+i {
+  display: inline;
+} */
+
+.rule {
+  background: silver;
+}
+.keyword {
+  color: red;
+}
