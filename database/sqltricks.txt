@@ -1,0 +1,58 @@
+
+
+select only headers:
+SELECT * FROM table WHERE 1 = 2 
+returns empty table (headers)
+
+SELECT * FROM Book INNER JOIN Publisher ON Book.PublisherID = Publisher.PublisherID
+
+SELECT COUNT(*) AS total_books, Publisher.Name FROM Book, Publisher 
+WHERE Book.PublisherID = Publisher.PublisherID GROUP BY Book.PublisherID LIMIT 10 --> shows top 10 rows of the output
+
+
+SELECT Publisher.Name, COUNT(*) as total_count 
+FROM Book INNER JOIN Publisher ON Book.PublisherID = Publisher.PublisherID 
+GROUP BY Book.PublisherID 
+ORDER BY total_count DESC LIMIT 1
+
+SELECT Borrower.FirstName, COUNT(*) AS total_num 
+FROM Borrower INNER JOIN Loan 
+WHERE Borrower.BorrowerID = Loan.BorrowerID 
+GROUP BY(Borrower.BorrowerID) 
+ORDER BY total_num DESC LIMIT 1
+
+SELECT MIN(Loan.'Date Borrowed') AS date_borrowed, Book.Title 
+FROM Loan INNER JOIN Book ON Loan.BookID = Book.BookID 
+GROUP BY Book.Title
+
+
+nested queries
+
+SELECT
+    FirstName,
+    Surname
+FROM
+    Borrower
+WHERE
+    BorrowerID NOT IN (SELECT BorrowerID FROM Loan);
+	
+SELECT * FROM Borrower WHERE BorrowerID NOT IN (SELECT BorrowerID FROM Loan)
+
+SELECT DISTINCT BookID FROM Loan 
+
+SELECT
+    Title
+FROM
+    Book
+WHERE
+    BookID = (
+        SELECT
+            BookID
+        FROM
+            Loan
+        GROUP BY
+            BookID
+        ORDER BY
+            COUNT(*) DESC
+        LIMIT 1
+    );
