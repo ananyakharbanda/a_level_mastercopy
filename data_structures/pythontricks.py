@@ -209,3 +209,25 @@ fibonnaci_rec_print(10)
 
 # while True:
 #     print('true')
+
+# clear python list
+a = [1, 2, 3]
+# a.clear() # OR
+
+# del a[:]
+
+# get index of an element
+
+a.index(2) # returns 1
+print(a.index(2))
+
+
+import copy
+a = [1,6,8,3,7,0]
+b = copy.deepcopy(a)
+a.clear()
+print(a, b)
+
+import random
+
+a = random.randint(1, 4) # includes both end points
