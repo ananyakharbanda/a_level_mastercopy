@@ -231,3 +231,32 @@ print(a, b)
 import random
 
 a = random.randint(1, 4) # includes both end points
+
+import os
+
+x = os.getcwd()
+print(x)
+
+
+
+import datetime
+
+print(datetime.datetime.now())
+
+x = datetime.datetime.now()
+print(x.date())
+print(x.hour)
+print(x.minute)
+print(x.second)
+
+
+import timeit
+
+# Define a simple function to time
+def my_function():
+    return sum(range(1000))
+
+# Time the function using timeit
+execution_time = timeit.timeit(my_function, number=10000)
+
+print(f"Execution time: {execution_time:.6f} seconds")

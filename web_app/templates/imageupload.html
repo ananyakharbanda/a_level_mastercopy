@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html bgcolor="lightblue">
+  <head>
+    <title>image uploader</title>
+  </head>
+  <nav>
+    <a href="{{ url_for('viewall') }}">view all</a>
+  </nav>
+  <body>
+    <form method="post" enctype="multipart/form-data">
+      <p>choose your file <input type="file" name="imagefile" /></p>
+      <p><input type="submit" /></p>
+    </form>
+  </body>
+</html>
