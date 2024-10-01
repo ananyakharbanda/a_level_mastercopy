@@ -260,3 +260,28 @@ def my_function():
 execution_time = timeit.timeit(my_function, number=10000)
 
 print(f"Execution time: {execution_time:.6f} seconds")
+
+def two_sum(a, b):
+    return a + b
+
+def swrap():
+    return two_sum(10, 50)
+
+ext = timeit.timeit(swrap, number=100)
+
+
+# isinstance
+class A():
+    def __init__(self):
+        pass
+
+class B():
+    def __init__(self):
+        pass
+
+x = A()
+assert isinstance(x, A) == True
+
+y = 5
+
+assert isinstance(y, float) == False

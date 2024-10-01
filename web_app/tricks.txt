@@ -12,6 +12,9 @@ GET: <form action="{{ url_for('process_with_get') }}">
 
 POST: <form method="post"> --> it will go to the method where this html was rendered from 
 
+Text area for multiline text
+<textarea name="feedback">Enter feedback here.</textarea>
+
  <p>Input s: <input name="s"></p>
  <p><input type="submit"></p>
 </form>

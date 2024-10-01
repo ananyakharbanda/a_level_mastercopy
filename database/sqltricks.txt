@@ -58,3 +58,7 @@ WHERE
     );
 
 DONT FORGET TO COMMIT --> MISSING THIS WILL CORRUPT YOUR FILE
+
+SELECT Department.ID, Department.Name FROM Department WHERE Department.ID NOT IN (SELECT DISTINCT DepartmentID From Employees)
+
+select * from Employees where Employees.Name like 'A%'

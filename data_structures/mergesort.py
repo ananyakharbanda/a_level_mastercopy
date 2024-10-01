@@ -40,57 +40,27 @@ sorted_arr = mergesort(arr, 0, len(arr) - 1)
 print(sorted_arr)
 
 
-def merge_ite(arr, left, mid, right):
-    # Create temporary subarrays
-    left_part = arr[left:mid + 1]
-    right_part = arr[mid + 1:right + 1]
-    
-    i = j = 0
-    k = left
-    
-    # Merge the subarrays
-    while i < len(left_part) and j < len(right_part):
-        if left_part[i] <= right_part[j]:
-            arr[k] = left_part[i]
-            i += 1
-        else:
-            arr[k] = right_part[j]
-            j += 1
-        k += 1
-    
-    # Copy the remaining elements of left_part, if any
-    while i < len(left_part):
-        arr[k] = left_part[i]
-        i += 1
-        k += 1
-    
-    # Copy the remaining elements of right_part, if any
-    while j < len(right_part):
-        arr[k] = right_part[j]
-        j += 1
-        k += 1
-
 def iterative_mergesort(arr):
     n = len(arr)
-    curr_size = 1  # Start with subarrays of size 1
+    # Initially, subarrays of size 1 are already sorted.
+    current_size = 1
     
-    # Merge subarrays in bottom-up manner
-    while curr_size < n:
-        left = 0
-        # Pick the starting point of different subarrays of current size
-        while left < n - 1:
-            mid = min((left + curr_size - 1), (n - 1))  # Calculate the mid index
-            right = min((left + 2 * curr_size - 1), (n - 1))  # Calculate the right index
+    # Double the subarray size each time.
+    while current_size < n:
+        # Start from the left of the array and merge subarrays of size current_size
+        for left in range(0, n, 2 * current_size):
+            mid = min(left + current_size - 1, n - 1)
+            right = min(left + 2 * current_size - 1, n - 1)
             
-            # Merge subarrays arr[left...mid] and arr[mid+1...right]
-            merge_ite(arr, left, mid, right)
-            
-            left += 2 * curr_size
+            if mid < right:  # There are two halves to merge
+                left_half = arr[left:mid + 1]
+                right_half = arr[mid + 1:right + 1]
+                arr[left:right + 1] = merge(left_half, right_half)
         
-        # Double the subarray size
-        curr_size *= 2
-    
+        current_size *= 2
+
     return arr
+
 
 # Testing the iterative merge sort
 arr = [2, 7, 9, 4, 5, -3]
